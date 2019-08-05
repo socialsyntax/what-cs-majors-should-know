@@ -157,7 +157,7 @@
   and in reasoning rigorously about the basic discrete structures:
   sets, tuples, sequences, functions and power sets.
 
-** TODO Specific recommendations
+** TODO Specific recommendations / 500 points
 
    For computer scientists, it's important to cover reasoning about:
 
@@ -170,7 +170,7 @@
 	common cryptographic protocols.
 
 *** Recommended reading
-	- ???
+	- [ ] Introduction to Discrete Mathematics for Computer Science Specialization https://www.coursera.org/specializations/discrete-mathematics?
 
 * Data structures and algorithms
 
