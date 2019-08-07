@@ -24,6 +24,16 @@
    - [ ] Essence of calculus    100 points
    - [ ] Fourier series 20 points
 
+** TODO Mathologer https://www.youtube.com/channel/UC1_uAIS3r8Vu6JjXWvastJg
+   - [ ] The Simpsons and Futurama 100 points
+   - [ ] Rubik's cubes 100 points
+   - [ ] Geometry 100 points
+
+** TODO The Coding Train
+   - [ ] The Nature of Code: Simulating Natural Systems with Processing 300 poits
+   - [ ] Learning Processing: A Beginner's Guide to Programming Images, Animation, and Interaction 300 points
+
+
 
 * The Unix philosophy
    The Unix philosophy (as opposed to Unix itself) is one that
