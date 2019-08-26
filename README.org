@@ -33,7 +33,9 @@
    - [ ] The Nature of Code: Simulating Natural Systems with Processing 300 poits
    - [ ] Learning Processing: A Beginner's Guide to Programming Images, Animation, and Interaction 300 points
 
+** TODO Learn to think https://brilliant.org/
 
+** TODO Multivariable calculus https://www.khanacademy.org/math/multivariable-calculus
 
 * The Unix philosophy
    The Unix philosophy (as opposed to Unix itself) is one that
@@ -61,7 +63,7 @@
      - Replace all spaces in a filename with underscore for a given directory.
      - Report the last ten errant accesses to the web server coming from a specific IP address.
 
-** TODO Recommended reading / eatch 100 points
+** TODO Recommended reading / each 100 points
    - [ ] Linux Tools for Developers https://www.coursera.org/learn/linux-tools-for-developers
    - [ ] Operating Systems and You: Becoming a Power User https://www.coursera.org/learn/os-power-user
    - [ ] The Bits and Bytes of Computer Networking https://www.coursera.org/learn/computer-networking
@@ -243,6 +245,9 @@
 
 ** TODO Recommended reading / 300 points
    - [ ] Julia programming language
+
+* Physics / Math
+** The Feynman Lectures on Physics http://www.feynmanlectures.caltech.edu/
 
 * TODO Non-specific reading recommendations / 100 points each
   - [ ] Gödel, Escher, Bach by Hofstadter.

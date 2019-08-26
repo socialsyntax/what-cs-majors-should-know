@@ -1,0 +1,553 @@
+
+#+TITLE: HOW TO BECOME A BAYESIAN
+#+CATEGORY: Statistics
+
+* SmallTalk node
+** SHELL
+  - http://www.squeaksource.com/SecureSqueak.html
+** FUSE
+   - SystemNavigation
+      #+BEGIN_SRC smalltalk
+     | nSources nChanges |
+     nSources := nChanges := 0
+     SystemNavigation default allBehaviorsDo: [ :b |
+             b selectorsDo: [ :s |
+                     (b compiledMethodAt: s) fileIndex = 1
+                             ifTrue: [ nSources := nSources + 1 ]
+                             ifFalse: [ nChanges := nChanges + 1 ]
+                      ]
+              ].
+
+
+     dd := SystemNavigation default.
+     bb := dd allBehaviors.
+     b := bb at: 1.
+     ss := b selectors.
+     s := ss at: 1.
+
+     m := b compiledMethodAt: s.
+     m getSourceFromFile
+   #+END_SRC
+   - Key bindings
+      #+BEGIN_SRC
+ World
+     bindKeyCombination: 9 command
+     toAction: [ SystemWindow  sendTopWindowToBack ].
+
+ KMSingleKeyCombination specialKeys .
+
+ KMLog setDebug .
+
+ Metacello new
+     repository: 'github://JulienDelplanque/Mirage:v2.1.0/src';
+     baseline: 'Mirage';
+     load
+
+   #+END_SRC
+   - Type binfing
+     #+BEGIN_SRC smalltalk
+| return |
+return := LFuseFunctionReturn new
+		methodSelector: #foo;
+		value: 'a string return'.
+
+return handleLFuseReturnCode .
+
+
+return := LGitFunctionReturn new
+		methodSelector: #foo;
+		value: 'a string return'.
+
+return handleLGitReturnCode
+
+     #+END_SRC
+** SMALLSTEP Everything you should know about certificates
+   https://smallstep.com/blog/everything-pki.html
+** Whistled Turkish
+   https://languagelog.ldc.upenn.edu/nll/?p=43016
+
+* STM
+  - bare metal
+    http://www.hashmismatch.net/pragmatic-bare-metal-rust/
+  - mbed os
+    https://os.mbed.com/platforms/ST-Discovery-L475E-IOT01A/
+    https://medium.com/@jankammerath/aws-iot-hands-on-a-practical-tutorial-db8896da5302
+    https://community.platformio.org/t/stm32cube-unit-testing-tutorial-with-stm32-disco-l475vg-iot01a/5004/25
+  - zephyr
+    http://connect.linaro.org.s3.amazonaws.com/sfo17/Presentations/SFO17-102%20Deploy%20STM32%20family%20on%20Zephyr.pdf
+    https://docs.zephyrproject.org/latest/boards/arm/disco_l475_iot1/doc/disco_l475_iot1.html
+  - rust jobs
+    http://berlinstartupjobs.com/companies/prisma/
+  - watson
+    https://developer.ibm.com/recipes/tutorials/telemetry-with-an-stm32-discovery-kit-iot-node-and-ibm-watson/
+    https://stm32f4-discovery.net/2017/07/stm32-tutorial-efficiently-receive-uart-data-using-dma/
+
+  - Writing an OS in Rust
+    - book https://os.phil-opp.com/
+    - Assembly language, ARM RPi3 http://bob.cs.sonoma.edu/IntroCompOrg-RPi/chp-intro.html
+
+  - GY-56 VL53L1X laser timp de zbor
+      https://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html
+      https://www.zipy.ro/p/ali/gy-56-vl53l1x-laser-flight-time-range-sensor-module-serial-pwm-output-sensor-board/32905798015/#wrapper
+
+    https://www.st.com/content/ccc/resource/corporate/company/divisional_presentation/group0/43/b5/72/31/48/42/4a/93/STM32L4_Discovery_Kit_IoT_Node_Hands_on/files/STM32L4_Discovery_Kit_IoT_Node_Hands_on.pdf/_jcr_content/translations/en.STM32L4_Discovery_Kit_IoT_Node_Hands_on.pdf
+    https://www.st.com/content/dam/technology-tour-2017/hands-on-training_stm32.pdf
+    https://os.mbed.com/platforms/ST-Discovery-L475E-IOT01A/
+
+    http://sourcecode.fr/insa/BESC/DOC/STM32L4/STM32L4x6_RM0351.pdf
+    https://www.st.com/content/ccc/resource/technical/document/reference_manual/02/35/09/0c/4f/f7/40/03/DM00083560.pdf/files/DM00083560.pdf/jcr:content/translations/en.DM00083560.pdf
+  - WPA
+    https://justinribeiro.com/chronicle/2019/01/31/tiny-pwas-and-why-i-keep-building-them/
+    WebBluetooth https://webbluetoothcg.github.io/web-bluetooth/#gatt-interaction
+    : dmesg
+    #+BEGIN_SRC
+[1366198.498853] usb 6-1: new full-speed USB device number 3 using uhci_hcd
+[1366198.680963] usb 6-1: New USB device found, idVendor=0483, idProduct=374b
+[1366198.680967] usb 6-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[1366198.680970] usb 6-1: Product: STM32 STLink
+[1366198.680972] usb 6-1: Manufacturer: STMicroelectronics
+[1366198.680974] usb 6-1: SerialNumber: 066CFF484851877267105038
+[1366198.946107] usb-storage 6-1:1.1: USB Mass Storage device detected
+[1366198.946475] scsi host6: usb-storage 6-1:1.1
+[1366198.948039] cdc_acm 6-1:1.2: ttyACM0: USB ACM device
+[1366199.971041] scsi 6:0:0:0: Direct-Access     MBED     microcontroller  1.0  PQ: 0 ANSI: 2
+[1366199.971951] sd 6:0:0:0: Attached scsi generic sg2 type 0
+[1366199.975933] sd 6:0:0:0: [sdb] 2120 512-byte logical blocks: (1.09 MB/1.04 MiB)
+[1366199.979026] sd 6:0:0:0: [sdb] Write Protect is off
+[1366199.979029] sd 6:0:0:0: [sdb] Mode Sense: 03 00 00 00
+[1366199.982044] sd 6:0:0:0: [sdb] No Caching mode page found
+[1366199.982051] sd 6:0:0:0: [sdb] Assuming drive cache: write through
+[1366200.037991] sd 6:0:0:0: [sdb] Attached SCSI removable disk
+
+#+END_SRC
+
+** Adafruit Feather nRF52 Pro
+   https://github.com/espressif/esp-idf/tree/feature/nimble-preview
+   https://github.com/espressif/esp-nimble
+   https://esp32.com/viewtopic.php?t=9325
+
+   https://www.adafruit.com/product/3574
+
+* Cluetooth
+** protocol
+   - http://simonjf.com/2016/05/28/session-type-implementations.html
+   - light-bulb https://medium.com/@urish/reverse-engineering-a-bluetooth-lightbulb-56580fcb7546
+
+** smalltalk
+   - https://github.com/SOM-st/PySOM/tree/master/src/som
+   - https://medium.com/learn-how-to-program/latest
+   - http://stephane.ducasse.free.fr/FreeBooks/Gnu/ProgrammingUsingGnuSmalltalk.pdf
+   - http://live.exept.de/doc/online/german/TOP.html
+   - embed http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/DDJ/1991/9110/9110h/9110h.htm
+   - https://github.com/pharo-iot/PharoThings
+   - cpython https://github.com/dgrunwald/rust-cpython/tree/master/python3-sys
+   - rust-ffi https://svartalf.info/posts/2019-03-01-exposing-ffi-from-the-rust-library/
+** RETE
+   - http://www-poleia.lip6.fr/~fdp/NeOpus.html
+   - http://forum.world.st/Rule-engine-td4801671.html
+   - graph in Rust https://github.com/frankmcsherry/blog/blob/master/posts/2019-02-09.md
+
+** STT / CTC
+   - https://ai.googleblog.com/2019/03/an-all-neural-on-device-speech.html
+
+** The Embedded Rust Book
+
+*** system setup
+   : cat /etc/udev/rules.d/70-st-link.rules
+   #+BEGIN_EXAMPLE
+# STM32F3DISCOVERY rev A/B - ST-LINK/V2
+ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", TAG+="uaccess"
+
+# STM32F3DISCOVERY rev C+ - ST-LINK/V2-1
+ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
+
+   #+END_EXAMPLE
+
+   : lsusb
+   Bus 006 Device 006: ID 0483:374b STMicroelectronics ST-LINK/V2.1 (Nucleo-F103RB)
+
+   : ls -l /dev/bus/usb/006/006
+   crw-rw-r--+ 1 root plugdev 189, 645 ian  6 17:56 /dev/bus/usb/006/006
+
+   : getfacl /dev/bus/usb/006/006
+   #+BEGIN_SRC
+getfacl: Removing leading '/' from absolute path names
+# file: dev/bus/usb/006/006
+# owner: root
+# group: plugdev
+user::rw-
+user:vlad:rw-
+group::rw-
+mask::rw-
+other::r--
+
+#+END_SRC
+
+
+   : openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
+#+BEGIN_EXAMPLE
+Open On-Chip Debugger 0.9.0 (2018-01-24-01:05)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : auto-selecting first available session transport "hla_swd". To override use 'transport select <transport>'.
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+none separate
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v28 API v2 SWIM v18 VID 0x0483 PID 0x374B
+Info : using stlink api v2
+Info : Target voltage: 3.234166
+Info : stm32f3x.cpu: hardware has 6 breakpoints, 4 watchpoints
+
+#+END_EXAMPLE
+
+
+
+*** Microcontroller features
+    https://os.mbed.com/platforms/ST-Discovery-L475E-IOT01A/
+     STM32L475VGT6 in LQFP100 package
+     ARM®32-bit Cortex®-M4 CPU with FPU
+     Adaptive real-time accelerator (ART Accelerator™) allowing 0-wait state execution from Flash memory
+     80 MHz max CPU frequency
+     VDD from 1.71 V to 3.6 V
+     1 MB Flash
+     128 KB SRAM
+     True random generator (TRNG for HW entropy)
+     Quad SPI memory interface (1)
+     Timers General Purpose (7)
+     Timers Advanced-Control (2)
+     Timers Basic (2)
+     Timers LowPower (2)
+     Systick
+     Watchdog (2)
+     SPI (3)
+     I2C (3)
+     USART (6)
+     USB OTG Full Speed
+     CAN (1)
+     SAI (2)
+     SDMMC
+     SWPMI
+     GPIO (82) with external interrupt capability
+     12-bit ADC (3) with 16 channels
+     12-bit DAC with 2 channels
+     Ultra LP comparator (2)
+     Opamp (2)
+
+
+*** Board features
+
+     64-Mbit Quad-SPI (Macronix) Flash memory
+     Bluetooth® V4.1 module (SPBTLE-RF)
+     Sub-GHz (868 or 915 MHz) low-power-programmable RF module (SPSGRF-868 or SPSGRF-915)
+     Wi-Fi® module Inventek ISM43362-M3G-L44 (802.11 b/g/n compliant)
+     Dynamic NFC tag based on M24SR with its printed NFC antenna
+     2 digital omnidirectional microphones (MP34DT01)
+     Capacitive digital sensor for relative humidity and temperature (HTS221)
+     High-performance 3-axis magnetometer (LIS3MDL)
+     3D accelerometer and 3D gyroscope (LSM6DSL)
+     260-1260 hPa absolute digital output barometer (LPS22HB)
+     Time-of-Flight and gesture-detection sensor (VL53L0X)
+     2 push-buttons (user and reset)
+     USB OTG FS with Micro-AB connector
+     Expansion connectors:
+         Arduino™ Uno V3
+         PMOD
+     Flexible power-supply options: ST LINK USB VBUS or external sources
+     On-board ST-LINK/V2-1 debugger/programmer with USB re-enumeration capability: mass storage, virtual COM port and debug port
+
+
+
+
+** Build
+
+
+* DUMB HOME
+  - https://vas3k.com/blog/dumbass_home/?ref=sn
+
+* WATSON
+  c4:7f:51:03:84:8f
+** This Course: Fundamentals of Scalable Data Science
+***  Create the necessary framework
+    - nopanoc.ai/coursera
+      lib.aca55a@gmail.com / US / 1qazZAQ! / https://cloud.ibm.com/login
+    - watson studio
+      https://dataplatform.cloud.ibm.com/home?context=wdp&apps=data_science_experience,data_catalog&nocache=true
+cloud-object-storage-ci
+cloud-object-storage-pq
+
+lib.aca55a@gmail.com
+
+discover-iot-sample-20190202161941635
+
+discover-iot-sample-20190202162043688
+E9b42oWznDbgB8XKzII4SiiW8EY8zZy95REysEt0JE7g
+
+
+* QWE pictures
+  1. xev
+  : fswebcam -D 0 -r 640x480 --jpeg 85 --no-banner web-cam-shot.jpg
+
+_NET_WM_DESKTOP
+xdotool getmouselocation
+
+_NET_DESKTOP_LAYOUT
+
+ while true; do xdotool getmouselocation --shell; sleep 1; done
+
+ - https://medium.com/@vinayakvarrier/building-a-real-time-face-recognition-system-using-pre-trained-facenet-model-f1a277a06947
+
+* TLA+
+  https://learning.oreilly.com/library/view/practical-tla-planning/9781484238295/html/462201_1_En_1_Chapter.xhtml
+  https://github.com/pmer/tla-bin
+
+
+* MIO
+  https://www.edn.com/Home/PrintView?contentItemId=4442290
+  Sensor Fusion Library
+  https://www.nxp.com/support/developer-resources/software-development-tools/sensor-developer-resources/nxp-sensor-fusion:XTRSICSNSTLBOXX
+  electrocardiography (ECG)
+  electromyography (EMG)
+  and electroencephalography (EEG)
+
+  https://www.cooking-hacks.com/electromyography-sensor-egm
+
+  Underactuated Robotics
+  http://underactuated.csail.mit.edu/underactuated.html?chapter=trajopt
+
+
+
+* Information theory
+  - coursera https://www.coursera.org/learn/information-theory/lecture/aDhdn/chapter-1 http://iest2.ie.cuhk.edu.hk/~whyeung/post/draft2.pdf
+  - awesome https://github.com/Bladefidz/information-theory
+  - Information Theory, Inference, and Learning Algorithms
+    - http://www.inference.org.uk/mackay/itila/software.html
+  - Number theory
+    http://pi.math.cornell.edu/~hatcher/TN/TNbook.pdf
+
+* Books
+** TODO Scala for Machine Learning - Second Edition by Patrick R. Nicolas
+** TODO Advanced Scala with Cats
+*** DONE Elementary Scala book
+*** Algebird
+    - https://groups.google.com/forum/?fromgroups=#!topic/spark-users/4ht9ndVaZQY
+    - Functional and Reactive Domain Modeling
+** Seven Sketches in Compositionality:
+   An Invitation to Applied Category Theory
+   https://arxiv.org/pdf/1803.05316.pdf
+** Deep Learning
+   http://www.deeplearningbook.org/
+
+* Articles
+  - file:///home/vlad/Documents/Etz%20et%20al,%208%20steps%20v2.pdf - overview
+  - http://web.archive.org/web/20160110225652/http://www.lifesci.sussex.ac.uk/home/Zoltan_Dienes/Dienes%202011%20Bayes.pdf *
+  - http://www.socsci.uci.edu/~mdlee/Lee_BayesianModelTheoretics.pdf ** graphs
+  - http://www.sciencedirect.com/science/article/pii/S0925231217309864 * anomaly detection
+  - Edward https://arxiv.org/pdf/1701.03757v1.pdf
+    - repo on http://edwardlib.org/
+  - Recommended sources at the end https://blog.statsbot.co/machine-learning-algorithms-183cc73197c
+  - https://towardsdatascience.com/unraveling-bayesian-dark-magic-non-bayesianist-implementing-bayesian-regression-e4336ef32e61
+  - https://betanalpha.github.io/assets/case_studies/probability_theory.html#1_setting_a_foundation
+  - The free-energy principle: a rough guide to the brain?
+    https://www.fil.ion.ucl.ac.uk/~karl/The%20free-energy%20principle%20-%20a%20rough%20guide%20to%20the%20brain.pdf
+    http://www.wcas.northwestern.edu/nescan/knill.pdf
+
+* Math-Of-Machine-Learning
+  http://thelaziestprogrammer.com/sharrington/math-of-machine-learning
+  https://blog.ycombinator.com/learning-math-for-machine-learning/
+* SPARK
+** optimisation
+   http://rea.tech/how-we-optimize-apache-spark-apps/
+   - maximizeResourceAllocation
+   #+BEGIN_EXAMPLE
+   spark.executor.cores = number of CPUs on a worker node
+spark.executor.instances = number of worker nodes on a cluster
+spark.executor.memory = max memory available on a worker node - overheads
+spark.default.parallelism = 2 * number of CPUs in total on worker nodes
+   #+END_EXAMPLE
+   - manual
+     - spark.yarn.executor.memoryOverhead = spark.executor.memory * 0.10
+     - spark.executor.memory + spark.yarn.executor.memoryOverhead = memory per node / number of executors per node
+     - spark.default.parallelism = spark.executor.instances * spark.executor.cores
+     - swarm computation
+       - assume 4 cores per executor
+
+          | Name        | Role    | CPU | Exe | Memory   | MxExec    |      IP Address |
+          |-------------+---------+-----+-----+----------+-----------+-----------------|
+          | tm171lin63  | worker  |   4 |   1 | 8.4 GB   | 8.4 GB    |  135.247.171.63 |
+          | tm171lin66  | worker  |   4 |   1 | 12.6 GB  | 12.6 GB   |  135.247.171.66 |
+          | tm171lin64  | worker  |   4 |   1 | 12.6 GB  | 12.6 GB   |  135.247.171.64 |
+          | tm171lin62  | worker  |   4 |   1 | 12.6 GB  | 12.6 GB   |  135.247.171.62 |
+          | tm171lin67  | worker  |   4 |   1 | 12.6 GB  | 12.6 GB   |  135.247.171.67 |
+          | tm171lin61  | worker  |   4 |   1 | 14.7 GB  | 14.7 GB   |  135.247.171.61 |
+          | tm171lin60  | worker  |   8 |   2 | 29.5 GB  | 14.75 GB  |  135.247.171.60 |
+          | tm171lin71  | worker  |   8 |   2 | 16.8 GB  | 8.4 GB    |  135.247.171.71 |
+          | tm171lin72  | worker  |   8 |   2 | 16.8 GB  | 8.4 GB    |  135.247.171.72 |
+          | tm171lin59  | worker  |   8 |   2 | 25.3 GB  | 12.65 GB  |  135.247.171.59 |
+          | tm171lin65  | worker  |   8 |   2 | 12.6 GB  | 6.3 GB    |  135.247.171.65 |
+          | tm171lin251 | worker  |   8 |   2 | 16.8 GB  | 8.4 GB    | 135.247.171.251 |
+          | tm171lin68  | worker  |   8 |   2 | 8.4 GB   | 4.2 GB    |  135.247.171.68 |
+          | tm171lin70  | manager |   8 |   2 | 16.8 GB  | 8.4 GB    |  135.247.171.70 |
+          | tm171lin178 | worker  |   8 |   2 | 16.8 GB  | 8.4 GB    | 135.247.171.178 |
+          | skroder     | worker  |  32 |   8 | 67.5 GB  | 8.4375 GB | 135.247.171.177 |
+          |-------------+---------+-----+-----+----------+-----------+-----------------|
+          |             |         | 128 |  32 | 300.8 GB | 9.4 GB    |                 |
+         #+TBLFM: @>$3=vsum(@I..@II)::@>$5=vsum(@I..@II)::$4=$3/4::$6=$5/$4
+
+
+         ##+TBLFM: @>$3=vsum(@I..@II)::@>$5=vmean(@I..@II)::$4=$3/4::$6=$5/$4
+
+
+
+   #+BEGIN_SRC
+spark.executor.memory = 8G * 0.9
+spark.yarn.executor.memoryOverhead = 8G * 0.01
+spark.executor.cores = 4
+spark.executor.instances = 32
+spark.default.parallelism = 32 * 4
+   #+END_SRC
+
+** Suppervision
+   https://blog.knoldus.com/2016/01/05/ganglia-cluster-monitoring-monitoring-spark-cluster/
+***   Portainer: http://135.247.171.70:9000/#/swarm/
+      #+BEGIN_SRC
+sudo docker service create \
+--name portainer \
+--env http_proxy=http://87.254.212.120:8080 \
+--env https_proxy=http://87.254.212.120:8080 \
+--publish 9000:9000 \
+--replicas=1 \
+--constraint 'node.role == manager' \
+--mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock \
+portainer/portainer \
+-H unix:///var/run/docker.sock
+
+
+      #+END_SRC
+
+***   Ganglia: http://tm171lin177.wls.ro.alcatel-lucent.com/ganglia/?r=day&cs=&ce=&c=unspecified&h=&tab=m&vn=&hide-hf=false&m=load_all_report&sh=1&z=medium&hc=3&host_regex=&max_graphs=0&s=by+name
+
+** Functional
+   - https://www.iravid.com/posts/fp-and-spark.html
+
+** TODO Cluster
+   - [X] github project for spark-swarm
+   - [X] push to docker.io
+     https://cloud.docker.com/swarm/axadmin/repository/docker/axadmin/image1/general
+   - [ ] update docker image for spark + C*
+   - [ ] https://info.lightbend.com/rs/558-NCX-702/images/ebook-serving-machine-learning-models.pdf
+   - [ ] jupyter/all-spark-notebook https://github.com/deanwampler/JustEnoughScalaForSpark
+
+* Scala
+
+** DONE Functional Programming in Scala [4/4]                        :CODING:
+   - [X] Part 1. Introduction to functional programming
+     - [X] Chapter 1. What is functional programming?
+     - [X] Chapter 2. Getting started with functional programming in Scala
+     - [X] Chapter 3. Functional data structures
+     - [X] Chapter 4. Handling errors without exceptions
+     - [X] Chapter 5. Strictness and laziness
+     - [X] Chapter 6. Purely functional state
+   - [X] Part 2. Functional design and combinator libraries [3/3]
+     - [X] Chapter 7. Purely functional parallelism
+     - [X] Chapter 8. Property-based testing
+     - [X] Chapter 9. Parser combinators
+   - [X] Part 3. Common structures in functional design
+     - [X] Chapter 10. Monoids
+     - [X] Chapter 11. Monads
+     - [X] Chapter 12. Applicative and traversable functors
+   - [X] Part 4. Effects and I/O
+     - [X] Chapter 13. External effects and I/O
+     - [X] Chapter 14. Local effects and mutable state
+     - [X] Chapter 15. Stream processing and incremental I/O
+
+** TODO Cats [2/6]
+   - [X] https://typelevel.org/cats/
+   - [ ] https://www.cakesolutions.net/teamblogs/solving-dynamic-programming-problems-using-functional-programming-part-1
+   - [ ] An Investigation of the Laws of Traversals, by Mauro Jaskelioff
+   - [ ] https://wiki.haskell.org/Typeclassopedia
+   - [X] http://functorial.com/stack-safety-for-free/index.pdf
+   - [ ] https://www.reddit.com/r/ScalaConferenceVideos/ Videos
+   - [ ] https://github.com/Gabriel439/slides/blob/master/munihac/foldmap.md
+
+
+*** TODO Write spark api with Cats
+    - class https://ds12.github.io/scala-class/
+
+
+
+* Functional and Reactive Domain Modeling [2/10]
+    - [X] 1. Functional domain modeling: an introduction
+    - [X] 2. Scala for functional domain models
+    - [ ] 3. Designing functional domain models
+    - [ ] 4. Functional patterns for domain models
+    - [ ] 5. Modularization of domain models
+    - [ ] 6. Being reactive
+    - [ ] 7. Modeling with reactive streams
+    - [ ] 8. Reactive persistence and event sourcing
+    - [ ] 9. Testing your domain model
+    - [ ] 10. Summary—core thoughts and principles
+
+** adding sources
+   - transitiveClassifiers := Seq("sources", "javadoc")
+   - sbt updateSbtClassifiers # update-sbt-classifiers
+
+   import scala.reflect.runtime.universe
+   universe.reify(
+   for {
+    x <- Some(1)
+    y <- Some(2)
+   } yield x + y
+   ).tree
+
+
+* Chat bot
+** Reinforsement learning
+
+  - Policy Gradients
+    - https://github.com/higgsfield/RL-Adventure-2
+  - https://blog.insightdatascience.com/reinforcement-learning-from-scratch-819b65f074d8
+
+
+* Graph theory
+  The Uncertainty Principle in Software Engineering  http://jeffsutherland.org/papers/zivchaos.pdf
+  https://homes.cs.washington.edu/~pedrod/papers/aaai06c.pdf
+  https://homes.cs.washington.edu/~pedrod/papers/aaai06c.pdf
+  - How do Graph Neural Networks Work? https://towardsdatascience.com/graph-neural-networks-20d0f8da7df6
+  - casual models
+    https://arxiv.org/pdf/1801.04016.pdf
+
+* TensorFlow Course
+  https://github.com/open-source-for-science/TensorFlow-Course
+
+  (14:57:00) gabriel.nagy@nokia.com: https://github.com/andersy005/deep-learning-specialization-coursera
+  (14:59:24) gabriel.nagy@nokia.com: https://www.google.com/search?q=deep+learning+coursera+github&ie=utf-8&oe=utf-8&client=firefox-b-ab
+  http://mbmlbook.com/toc.html
+
+* C++
+** C++ Templates: The Complete Guide, 2nd Edition
+** https://github.com/arobenko/comms_champion
+
+* RIDDLES
+   https://www.womenly.net/mos/8-riddles-and-short-detective-stories-to-test-your-logic/?fbclid=IwAR2okprgtgDajl0jxondylEbxcnayWyeIhzVORcyFyXvxjRangOFMHhedo8
+
+* org-config                                                        :ARCHIVE:
+#+STARTUP: content hidestars
+#+TAGS: DOCS(d) CODING(c) TESTING(t) PLANING(p)
+#+LINK_UP: sitemap.html
+#+LINK_HOME: main.html
+#+COMMENT: toc:nil
+#+OPTIONS: ^:nil
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+DESCRIPTION: Augment design process with system property discovering aid.
+#+KEYWORDS: SmallCell,
+#+LANGUAGE: en
+
+#+STYLE: <link rel="stylesheet" type="text/css" href="org-manual.css" />
+#+PROPERTY: Effort_ALL  1:00 2:00 4:00 6:00 8:00 12:00
+#+COLUMNS: %38ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM{Total}

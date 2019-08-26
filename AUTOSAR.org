@@ -1,0 +1,35 @@
+
+#+TITLE: AUTOSAR Adaptive Platform
+
+#+CATEGORY: Differential Engine
+
+* Standard and Documentation
+  - https://www.autosar.org
+  - https://www.autosar.org/standards/adaptive-platform
+
+* Software and references
+  - A simplified model of programming in autosar https://github.com/patrikja/autosar
+  - AUTOSAR OS https://github.com/cogu/amber
+  - autoas/as https://github.com/autoas/as
+  - MICROSAR https://www.vector.com/int/en/products/products-a-z/#c10183
+  - OSEK/VDX http://trampolinebin.rts-software.org/os223.pdf
+
+** Processor in the loop
+   - Overdot is a vehicle simulation environment https://github.com/tuckermcclure/Overdot.jl
+
+* org-config                                                        :ARCHIVE:
+#+STARTUP: content hidestars
+#+TAGS: DOCS(d) CODING(c) TESTING(t) PLANING(p)
+#+LINK_UP: sitemap.html
+#+LINK_HOME: main.html
+#+COMMENT: toc:nil
+#+OPTIONS: ^:nil
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+DESCRIPTION: Augment design process with system property discovering aid.
+#+KEYWORDS: SmallCell,
+#+LANGUAGE: en
+
+#+STYLE: <link rel="stylesheet" type="text/css" href="org-manual.css" />
+#+PROPERTY: Effort_ALL  1:00 2:00 4:00 6:00 8:00 12:00
+#+COLUMNS: %38ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM{Total}
