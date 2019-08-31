@@ -6,6 +6,8 @@
 * Standard and Documentation
   - https://www.autosar.org
   - https://www.autosar.org/standards/adaptive-platform
+	- https://github.com/pengnianchun/AUTOSAR
+	- MISRA/AUTOSAR C++14 https://www.autosar.org/fileadmin/user_upload/standards/adaptive/17-03/AUTOSAR_RS_CPP14Guidelines.pdf
 
 * Software and references
   - A simplified model of programming in autosar https://github.com/patrikja/autosar
@@ -16,6 +18,197 @@
 
 ** Processor in the loop
    - Overdot is a vehicle simulation environment https://github.com/tuckermcclure/Overdot.jl
+
+* ODF [0/2]
+  - Rewrite.jl for term rewriting and ModelingToolkit.jl for symbolic differential equations.
+  - [ ] RoboticExplorationLab/TrajectoryOptimization.jl https://github.com/RoboticExplorationLab/TrajectoryOptimization.jl
+	- https://rexlab.stanford.edu/projects/trajopt.html
+  - [ ] Probabilistic Models of Cognition http://probmods.org/
+  - [ ] Probabilistic Programming and Bayesian Methods for Hackers
+
+* Julia runtime
+  - gizmaa/Plot_Examples.md
+  - Modia3D
+  - Geometric algebra in Julia with Grassmann.jl and differential geometry
+	- Geometric Control of Mechanical Systems http://www-lar.deis.unibo.it/euron-geoplex-sumsch/files/lectures_2/slides-bullo.pdf
+	  - real-time trajectory/path planning for autonomous vehicles
+  -
+* Real-time motion planning methods for autonomous on-roaddriving
+  !!! https://core.ac.uk/download/pdf/81951553.pdf
+**  motion planning of autonomous on-road driving [0/5]
+   (1) finding a path
+   (2) searching for the safest manoeuvre
+   (3) determining the most feasible trajectory.
+
+   - [ ] Route planning (SLAM) https://pdfs.semanticscholar.org/f712/798e03e4acae700739aa10f1ac43efeb3336.pdf?_ga=2.42046822.2135571211.1567243317-1154658479.1567243317
+   - [ ] driving corridors http://perpustakaan.unitomo.ac.id/repository/Contingency%20Planning%20Over%20Probabilistic%20Obstacle%20Predictions%20for%20Autonomous%20Road%20Vehicles06497657.pdf
+   - [ ] Voronoi Diagrams (Parking lot (Voronoi field)) http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=FBCF496B8C90A430FC3BAF90E78A7A7C?doi=10.1.1.468.5554&rep=rep1&type=pdf
+   - [ ] occupancy grids http://www.willowgarage.com/sites/default/files/J.%20Field%20Robot%202008%20-%20Little%20Ben.pdf
+	 - [ ] cost maps
+	 - [ ] generalization to lattices https://pdfs.semanticscholar.org/26d9/c40e8a6099ce61a5d9a6afa11814c45def01.pdf?_ga=2.105593152.2135571211.1567243317-1154658479.1567243317
+   - [ ] lattices https://people.csail.mit.edu/rak/www/sites/default/files/pubs/PivKneKel09.pdf
+	 - GPU Time http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.225.4980&rep=rep1&type=pdf
+
+** Methodology
+
+   - full workspace in which the planning takes
+	 - algorithms receive inputs from the sensor framework
+	 - and supplement theseinputs with data from digital road maps (Open???)
+
+** Case study
+   - four  wheeled  vehicleplanar model / multi-body  modeling  technique
+     (Renault-ZOE)
+     https://tel.archives-ouvertes.fr/tel-01727720/file/These_UTC_Alia_Chebly.pdf
+	 - Denavit Harten-berg parameterization
+	 - coupled  control  laws / lateral and the longitudinal vehicle dynamics
+	   - oupled maneuvers
+		 1. lane-change maneuvers
+		 2. obstacle avoidance maneuvers
+		 3. combined maneuve
+	 - trajectory  planning / clothoid tentacles method (local planning)
+	   - Lyapunov based controller under Matlab
+   - [ ] Dynamic path planning for autonomous driving on variousroads with avoidance of static and moving obstacles
+	 http://120.24.71.152/wp-content/themes/twentytwelve/pub_pdf/path%20planning%20for%20autonomous%20driving.pdf
+
+   - V2V
+	 - Game-Theoretic Control for Robot Teams
+	   - The Bayesian game approximation algorithm (BaGA)
+	   - Partially observable stochastic games (POSGs)
+
+   - Local path planning in a complex environment  for self-driving car
+	 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6917505
+
+** Route Planning
+   - Definition of planning in the context of autonomous driving
+	 - coordinate system / the configuration vector
+	 - set of all the configurations of the vehicle constitute the configuration space
+	 - state of a vehicle (state space)
+	   - the position (x,y,z),
+	   - the orientation (qx,qy,qz),
+	   - linear velocities (vx,vy,vz)
+	   - angular velocities (wx,wy,wz).
+	 - Actions result in a vehicle’s state transition (Action space)
+	   - acceleration
+	   - steering angle
+	 - Path is a geometric trace that the vehicle should follow
+	   - Path-planning is problem of finding a geometric path
+		 - from an initial configuration
+		 - to a given terminating configuration
+	 - Manoeuvreis a high-level characterisation of the motion
+	   - manoeuvre planning addresses the problem of taking the
+         besthigh-level decision for the vehicle
+	 - Trajectoryis represented as a sequence of states visited
+	   - rajectory planning - real-time planning of the actual
+         vehicle’s transition from one feasible state to the next,
+         satisfying the vehicle’s kinematic
+
+   - Route PLANNING loop
+	 - Finding the best geometric PATH for the vehicle to follow
+	   - Finding the best SEQUENCE OF ACTIONS through incremental sampling (RRTs vs Lattice planners)
+	   - Finding the best ACTION from multiple final states (ICS)
+	 - Finding the best MANOEUVRE to perform
+	 - Finding the best TRAJECTORY to follow through the optimisation of a geometric curve, according to given constraints
+
+   - Classification tree for planning approaches
+		 | Planing | Path         | Incremental         | RRTs                  |
+		 |         |              |                     | Latice Plannrs        |
+		 |         |              | Local               | Rool-Out Trajectories |
+		 |         |              |                     | PMP                   |
+		 |         | Manoeuvres   | Obstacle & Risc     |                       |
+		 |         |              | Decission theory    |                       |
+		 |         | Trajectories | Geometric Curve Opt |                       |
+		 |         |              | MPC                 |                       |
+
+
+	 - Data representation
+	   - [ ] Rapidly exploring random trees (RRTs) http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1853&rep=rep1&type=pdf
+		 - [ ] probabilistically complete https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5175292
+		 - [ ] collision checking (CL-RRT) http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.70.5195&rep=rep1&type=pdf
+		 - [ ] threat assessment http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.310.8709&rep=rep1&type=pdf
+		 - [ ] traffic rules / non-deterministic finite automaton https://arxiv.org/pdf/1305.1102.pdf
+	   - [ ] Lattice planners
+		 - [ ] road environment https://www.cs.cmu.edu/~maxim/files/planlongdynfeasmotions_rss08.pdf
+		   - [ ]  resolution complete
+		   - [ ] curvature discontinuity http://fileadmin.cs.lth.se/ai/Proceedings/ICRA2010/MainConference/data/papers/0717.pdf
+		   - [ ] spatio-temporal state lattices http://vigir.missouri.edu/~gdesouza/Research/Conference_CDs/IEEE_IROS_2009/papers/0877.pdf
+			 - vehicle kinematic equations
+			 - [ ] !!! quartic curvature polynomials  https://www.ri.cmu.edu/pub_files/2012/5/ICRA12_xuwd_Final.pdf
+		 - [ ] exhaustive sampling https://ri.cmu.edu/pub_files/2013/6/IV2013-Tianyu.pdf
+
+	   - [ ] ??? Collision Prediction Modules
+	   - Local search
+		 - [ ] cost function  https://onlinelibrary.wiley.com/doi/pdf/10.1002/rob.20258
+		 - (i) Lateral shifts in the action space https://ri.cmu.edu/pub_files/2012/10/ICIRA2012.pdf
+		 - (ii) Lateral shifts in the state space
+		 - [ ] Partial Motion Planning https://hal.inria.fr/inria-00086286/document
+		 - [ ] Inevitable Collision States https://mediatum.ub.tum.de/doc/1173997/1173997.pdf
+	   - Manoeuvre planning and decision making
+		 - [ ] motion modelling and obstacle prediction  https://hal.inria.fr/hal-01053736/document
+		   - [ ] hysics-based,
+			 - [ ] grid-based Bayesian filter https://www.honda-ri.de/pubs/pdf/149.pdf
+		   - [ ] manoeuvre-based
+			 - [ ] Hidden Markov models https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=2ahUKEwiwiqDh1K3kAhUSCKwKHRjeBA0QFjACegQIAxAC&url=https%3A%2F%2Fetd.ohiolink.edu%2F!etd.send_file%3Faccession%3Dosu1365952195%26disposition%3Dattachment&usg=AOvVaw09ECjA0TDcQHuR-GsETh1M
+		   - [ ] interaction-aware
+			 - [ ] !! Partially Observable Markov Decision Processe https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7014400
+
+		 - [ ] modelling of thetraffic environment
+
+		   - [ ] Multiple Criteria Decision Making https://www.academia.edu/24959302/Enabling_Safe_Autonomous_Driving_in_Real-World_City_Traffic_Using_Multiple_Criteria_Decision_Making
+		   - [ ] Prediction and-Cost-function Based https://ri.cmu.edu/pub_files/2014/6/IV2014-Junqing-Final.pdf
+		   - [ ] pedestrians’ intentions Game Theory  https://core.ac.uk/download/pdf/4423814.pdf !!! https://core.ac.uk/download/pdf/16697226.pdf
+
+	   - Trajectory level
+		 - [ ] geometric representations
+		   - arcs
+		   - clothoids
+		   - Nelson polynomials
+		   - [ ] polynomial spirals,spline curves,Bezier curves https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6173293
+		 - [ ] !!! fourth order polynomials and a dynamic bicycle model https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5611299
+		 - [ ] !!! Continuous curvature planning https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6957887
+		 - [ ] manoeuvres and traffic rules https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6144858
+		 - [ ] BMW’s autonomous vehicle Bertha https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6856581
+		 - [ ] Model Predictive Control (VOLVO) https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6629586
+	   - [ ] Adaptiv Emodel-Predictive Motion Planning
+		 https://www.ri.cmu.edu/pub_files/2009/8/howard_final_dissertation.pdf
+		 - high density network
+		 - locally optimal motion
+		 - motion model fidelit
+
+
+** Performance analyses
+	 - Cars non-holonomic because
+	   - described by 4 degrees of freedom
+		 - 2 Cartesian coordinates,
+		 - orientation
+		 - heading
+	   - but have 2 kinematic constraints:
+		 - (i) they can only move backwards and forwards,
+		   tangentially to the directionof their main body and
+		 - (ii) the steering radius is bounded
+		 - (iii) motion is constrained by non-integrable
+		   differential constraints due to the assumption that the
+		   wheels roll without slipping
+
+	 - Obstacle handling
+	 - [ ] Vehicle dynamics https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6579835
+	   - [ ] https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5611299
+
+	 - Risk indicators
+	   - Time to Collision (TTC),Distance to Collision (DTC) or Time to React (TTR)
+		 - [ ] Evaluating Risk https://hal.inria.fr/hal-00678482/document
+		 - [ ] Disaggregated traffic https://www.deepdyve.com/lp/elsevier/modelling-lane-changing-and-merging-in-microscopic-traffic-simulation-ZpNtfttJNb
+		 - [ ] ego-vehicle network level https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6094496
+		 - [ ] Frenét frame distances  https://link.springer.com/chapter/10.1007%2F0-387-28831-7_22
+
+
+
+	 - Sensing and perception
+	   - [ ] near-perfect knowledge http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.640.1737&rep=rep1&type=pdf
+	   - DSRC
+	 - Testing environment
+	   - simulations;
+	   - exper-iments with model vehicles;
+	   - experiments in real-world.
 
 * org-config                                                        :ARCHIVE:
 #+STARTUP: content hidestars
