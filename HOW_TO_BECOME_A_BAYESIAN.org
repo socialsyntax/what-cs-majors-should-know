@@ -2,6 +2,48 @@
 #+TITLE: HOW TO BECOME A BAYESIAN
 #+CATEGORY: Statistics
 
+
+* Julia in LaTeX
+  - https://julialang.org/learning/
+** Bootup
+*** DifferentialEq.jl
+*** Flux + Zygote
+*** DiffEqFlux.jl
+	- mechanistic vs non-mechanistic models
+	- Scientific AI: Domain Models with Integrated Machine Learning | Chris Rackauckas
+	- Backwards SDE approach
+*** Probabilistic Programming
+*** Introduction to Applied Linear Algebra
+    - http://vmls-book.stanford.edu/vmls.pdf
+	- Julia Language Companion  http://vmls-book.stanford.edu/vmls-julia-companion.pdf
+	- Lecture slides http://vmls-book.stanford.edu/vmls-slides.pdf
+*** Statistics with Julia
+	- https://people.smp.uq.edu.au/YoniNazarathy/julia-stats/StatisticsWithJulia.pdf
+*** Quantitative Economics with Julia
+	- https://lectures.quantecon.org/jl/
+*** information-theory
+	- https://github.com/Bladefidz/information-theory
+** Julia runtime
+   - gizmaa/Plot_Examples.md
+   - Modia3D
+   - Geometric algebra in Julia with Grassmann.jl and differential geometry
+	 - Geometric Control of Mechanical Systems http://www-lar.deis.unibo.it/euron-geoplex-sumsch/files/lectures_2/slides-bullo.pdf
+	   - real-time trajectory/path planning for autonomous vehicles
+   -
+
+** Processor in the loop
+   - Overdot is a vehicle simulation environment https://github.com/tuckermcclure/Overdot.jl
+
+** ODE [0/4]
+   - Rewrite.jl for term rewriting and ModelingToolkit.jl for symbolic differential equations.
+   - [ ] RoboticExplorationLab/TrajectoryOptimization.jl https://github.com/RoboticExplorationLab/TrajectoryOptimization.jl
+	 - https://rexlab.stanford.edu/projects/trajopt.html
+   - [ ] Probabilistic Models of Cognition http://probmods.org/
+   - [ ] Probabilistic Programming and Bayesian Methods for Hackers
+   - [ ] Differentiate All The Things! | Mike Innes
+	 - back prop on controll model x1000
+	 - MIT self driving lego
+
 * SmallTalk node
 ** SHELL
   - http://www.squeaksource.com/SecureSqueak.html
@@ -66,7 +108,7 @@ return handleLGitReturnCode
 ** Whistled Turkish
    https://languagelog.ldc.upenn.edu/nll/?p=43016
 
-* STM
+* STM32
   - bare metal
     http://www.hashmismatch.net/pragmatic-bare-metal-rust/
   - mbed os
@@ -265,7 +307,6 @@ Info : stm32f3x.cpu: hardware has 6 breakpoints, 4 watchpoints
 
 ** Build
 
-
 * DUMB HOME
   - https://vas3k.com/blog/dumbass_home/?ref=sn
 
@@ -287,7 +328,6 @@ discover-iot-sample-20190202161941635
 discover-iot-sample-20190202162043688
 E9b42oWznDbgB8XKzII4SiiW8EY8zZy95REysEt0JE7g
 
-
 * QWE pictures
   1. xev
   : fswebcam -D 0 -r 640x480 --jpeg 85 --no-banner web-cam-shot.jpg
@@ -304,8 +344,6 @@ _NET_DESKTOP_LAYOUT
 * TLA+
   https://learning.oreilly.com/library/view/practical-tla-planning/9781484238295/html/462201_1_En_1_Chapter.xhtml
   https://github.com/pmer/tla-bin
-
-
 * MIO
   https://www.edn.com/Home/PrintView?contentItemId=4442290
   Sensor Fusion Library
@@ -318,7 +356,6 @@ _NET_DESKTOP_LAYOUT
 
   Underactuated Robotics
   http://underactuated.csail.mit.edu/underactuated.html?chapter=trajopt
-
 
 
 * Information theory
@@ -443,7 +480,6 @@ portainer/portainer \
    - [ ] jupyter/all-spark-notebook https://github.com/deanwampler/JustEnoughScalaForSpark
 
 * Scala
-
 ** DONE Functional Programming in Scala [4/4]                        :CODING:
    - [X] Part 1. Introduction to functional programming
      - [X] Chapter 1. What is functional programming?
@@ -479,7 +515,6 @@ portainer/portainer \
     - class https://ds12.github.io/scala-class/
 
 
-
 * Functional and Reactive Domain Modeling [2/10]
     - [X] 1. Functional domain modeling: an introduction
     - [X] 2. Scala for functional domain models
@@ -504,14 +539,12 @@ portainer/portainer \
    } yield x + y
    ).tree
 
-
 * Chat bot
 ** Reinforsement learning
 
   - Policy Gradients
     - https://github.com/higgsfield/RL-Adventure-2
   - https://blog.insightdatascience.com/reinforcement-learning-from-scratch-819b65f074d8
-
 
 * Graph theory
   The Uncertainty Principle in Software Engineering  http://jeffsutherland.org/papers/zivchaos.pdf

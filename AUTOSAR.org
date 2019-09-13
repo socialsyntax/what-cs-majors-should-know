@@ -15,25 +15,9 @@
   - autoas/as https://github.com/autoas/as
   - MICROSAR https://www.vector.com/int/en/products/products-a-z/#c10183
   - OSEK/VDX http://trampolinebin.rts-software.org/os223.pdf
+  - https://blog.conan.io/2019/09/02/Deterministic-builds-with-C-C++.html
 
-** Processor in the loop
-   - Overdot is a vehicle simulation environment https://github.com/tuckermcclure/Overdot.jl
-
-* ODF [0/2]
-  - Rewrite.jl for term rewriting and ModelingToolkit.jl for symbolic differential equations.
-  - [ ] RoboticExplorationLab/TrajectoryOptimization.jl https://github.com/RoboticExplorationLab/TrajectoryOptimization.jl
-	- https://rexlab.stanford.edu/projects/trajopt.html
-  - [ ] Probabilistic Models of Cognition http://probmods.org/
-  - [ ] Probabilistic Programming and Bayesian Methods for Hackers
-
-* Julia runtime
-  - gizmaa/Plot_Examples.md
-  - Modia3D
-  - Geometric algebra in Julia with Grassmann.jl and differential geometry
-	- Geometric Control of Mechanical Systems http://www-lar.deis.unibo.it/euron-geoplex-sumsch/files/lectures_2/slides-bullo.pdf
-	  - real-time trajectory/path planning for autonomous vehicles
-  -
-* Real-time motion planning methods for autonomous on-roaddriving
+* Real-time motion planning methods for autonomous on-road driving
   !!! https://core.ac.uk/download/pdf/81951553.pdf
 **  motion planning of autonomous on-road driving [0/5]
    (1) finding a path
@@ -200,8 +184,6 @@
 		 - [ ] ego-vehicle network level https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6094496
 		 - [ ] Frenét frame distances  https://link.springer.com/chapter/10.1007%2F0-387-28831-7_22
 
-
-
 	 - Sensing and perception
 	   - [ ] near-perfect knowledge http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.640.1737&rep=rep1&type=pdf
 	   - DSRC
@@ -209,6 +191,72 @@
 	   - simulations;
 	   - exper-iments with model vehicles;
 	   - experiments in real-world.
+
+
+
+
+
+
+* TODO Learning
+** Self-Driving Cars
+   https://github.com/qiaoxu123/Self-Driving-Cars
+
+*** 1. Introduction to Self-Driving Cars
+	- KITTI Vision Benchmark Suite,  http://www.cvlibs.net/datasets/kitti/
+**** MODELING FOR PLANNING AND CONTROL
+	 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7490340
+	 - SE(2) - Special  Euclidean  group  in  two  dimensions
+	   - The Kinematic Single-Track Model
+		 #+BEGIN_SRC julia
+		   (ṗpr·ˆey)cos(θ)−( ̇pr·ˆex)sin(θ)=0 # (1)
+		   (̇pf·ˆey)cos(θ+δ)−( ̇pf·ˆex)sin(θ+δ)=0 # (2) front wheel
+		 #+END_SRC
+	 - Trajectory Tracking Control for the Kinematic Model
+	   - Control Lyapunov Based Design:
+	   - Output   Feedback   Linearization
+	   - Predictive Control Approaches, MPC
+		 - Unconstrained MPC with Kinematic Models
+		 - Path Tracking Controllers
+		 - Linear Parameter Varying Controller
+**** TODO BOSS                                                      :PLANING:
+	 https://onlinelibrary.wiley.com/doi/pdf/10.1002/rob.20255
+	 - parameterized controlsu(p,x)
+	 - ISO 26262-1:2018 - Functional Safety for Road Vehicles
+**** How does Autonomous Driving Work? An Intro into SLAM
+	 - https://towardsdatascience.com/slam-intro-fd833ef29e4e
+*** 2. State Estimation and Localization for Self-Driving Cars
+*** 3. Visual Perception for Self-Driving Cars
+*** 4. Motion Planning for Self-Driving Cars
+*** 5. Automatic differentiation of rigid body dynamics for optimal control and estimation
+	- JuMP.jl, RigidBodyDynamics.jl
+	 - Falcone, P. et al., "Predictive Active Steering Control for Autonomous Vehicle Systems", IEEE (2007)
+** OEDR object-event detection
+** ODD operational design domains
+
+   https://www.coursera.org/specializations/self-driving-cars
+
+** Simulation with Carla
+   - https://github.com/carla-simulator/carla/
+
+
+
+*** Installing
+    : sudo nvidia-xconfig -a --use-display-device=None --virtual=1280x1024
+    : sudo service lightdm stop
+    : sudo nohup Xorg :7 &
+    : /opt/TurboVNC/bin/vncserver :8
+    : DISPLAY=:8 vglrun -d :7.0 glxinfo
+    : DISPLAY=:8 vglrun -d :7.0 $CARLA_PATH/CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping
+    : sudo hwinfo --gfxcard
+    : nvidia-smi
+    : cat /proc/driver/nvidia/gpus/0000:05:00.0/information
+    : sudo lshw -c display
+
+**** NVIDIA Drivers
+	 : sudo apt install nvidia-driver-430
+
+
+
 
 * org-config                                                        :ARCHIVE:
 #+STARTUP: content hidestars
