@@ -254,10 +254,15 @@
 
 **** NVIDIA Drivers
 	 : sudo apt install nvidia-driver-430
+	 - CxxWrap.jl
+	 - http://pointclouds.org/
+	 - Quaternion kinematics for the error-state Kalman filter
+	 - [ ] Transfer Learning from RGB to Multi-band Imagery
+	 - [ ] http://www-lar.deis.unibo.it/euron-geoplex-sumsch/files/lectures_2/slides-bullo.pdf
+	      Geometric Control of Mechanical Systems
 
 
-
-
+**** A
 * org-config                                                        :ARCHIVE:
 #+STARTUP: content hidestars
 #+TAGS: DOCS(d) CODING(c) TESTING(t) PLANING(p)
