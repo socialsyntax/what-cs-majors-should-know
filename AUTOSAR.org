@@ -262,7 +262,13 @@
 	      Geometric Control of Mechanical Systems
 
 
-**** A
+**** Ego Mission
+	 - [ ] http://planning.cs.uiuc.edu/
+	 - variational planner
+
+
+
+
 * org-config                                                        :ARCHIVE:
 #+STARTUP: content hidestars
 #+TAGS: DOCS(d) CODING(c) TESTING(t) PLANING(p)
